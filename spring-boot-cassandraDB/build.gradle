@@ -1,0 +1,37 @@
+
+
+plugins {
+	id 'org.springframework.boot' version '2.0.6.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	// Be VERY careful with these dependencies!
+	// It's a painful process to come up with the right versions of all the libraries below. The
+	// following dependencies are configurd to work properly when using Spintg-boot v 2.0.6.RELEASE, as
+	// it's configured i this build file. (It might fail with other versions)
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-cassandra:2.0.6.RELEASE'
+	implementation 'com.datastax.cassandra:cassandra-driver-core:3.1.1'
+	implementation 'com.google.guava:guava:19.0'
+
+	// testing...
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.0.6.RELEASE'
+
+	// embedded CassandraDB for testing...
+	testCompile 'org.cassandraunit:cassandra-unit-spring:3.5.0.1'
+
+}
+
+
